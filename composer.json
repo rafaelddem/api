@@ -1,0 +1,14 @@
+{
+    "name": "rafaelddem/api",
+    "authors": [
+        {
+            "name": "Rafael Delfino de Medeiros",
+            "email": "rafaelddem@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "api\\": "src/"
+        }
+    }
+}
