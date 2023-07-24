@@ -4,7 +4,7 @@ namespace api\model\entity;
 
 use api\exceptions\RouteNotExistException;
 
-class Target
+class MethodCaller
 {
     private $className;
     private $methodName;

@@ -4,11 +4,11 @@ namespace api\controller;
 
 use api\conf\Parameters;
 use api\exceptions\RouteNotExistException;
-use api\model\entity\DELETE;
-use api\model\entity\GET;
-use api\model\entity\POST;
-use api\model\entity\PUT;
-use api\model\entity\Target;
+use api\model\entity\requisition\DELETE;
+use api\model\entity\requisition\GET;
+use api\model\entity\requisition\POST;
+use api\model\entity\requisition\PUT;
+use api\model\entity\MethodCaller;
 
 class Route
 {
@@ -17,7 +17,7 @@ class Route
     static function addGet(string $path, string $class_name, string $method)
     {
         try {
-            self::$routes[Parameters::REQUEST_METHOD_GET][$path] = new Target($class_name, $method);
+            self::$routes[Parameters::REQUEST_METHOD_GET][$path] = new MethodCaller($class_name, $method);
         } catch (\Throwable $th) {
             Response::send(['code' => $th->getCode(), 'message' => $th->getMessage()], true, 404);
         }
@@ -26,7 +26,7 @@ class Route
     static function addPost(string $path, string $class_name, string $method)
     {
         try {
-            self::$routes[Parameters::REQUEST_METHOD_POST][$path] = new Target($class_name, $method);
+            self::$routes[Parameters::REQUEST_METHOD_POST][$path] = new MethodCaller($class_name, $method);
         } catch (\Throwable $th) {
             Response::send(['code' => $th->getCode(), 'message' => $th->getMessage()], true, 404);
         }
@@ -35,7 +35,7 @@ class Route
     static function addPut(string $path, string $class_name, string $method)
     {
         try {
-            self::$routes[Parameters::REQUEST_METHOD_PUT][$path] = new Target($class_name, $method);
+            self::$routes[Parameters::REQUEST_METHOD_PUT][$path] = new MethodCaller($class_name, $method);
         } catch (\Throwable $th) {
             Response::send(['code' => $th->getCode(), 'message' => $th->getMessage()], true, 404);
         }
@@ -44,7 +44,7 @@ class Route
     static function addDelete(string $path, string $class_name, string $method)
     {
         try {
-            self::$routes[Parameters::REQUEST_METHOD_DELETE][$path] = new Target($class_name, $method);
+            self::$routes[Parameters::REQUEST_METHOD_DELETE][$path] = new MethodCaller($class_name, $method);
         } catch (\Throwable $th) {
             Response::send(['code' => $th->getCode(), 'message' => $th->getMessage()], true, 404);
         }

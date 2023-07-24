@@ -1,6 +1,6 @@
 <?php
 
-namespace api\model\entity;
+namespace api\model\entity\requisition;
 
 use api\conf\Parameters;
 use Exception;
